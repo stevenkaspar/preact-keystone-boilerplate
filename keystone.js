@@ -66,4 +66,42 @@ if (!process.env.MAILGUN_API_KEY || !process.env.MAILGUN_DOMAIN) {
 }
 
 
-keystone.start();
+
+if(process.env.USE_KEYSTONE_SERVER === 'true'){
+	keystone.start();
+}
+else {
+	console.log(`
+	/**
+	 * STARTING 
+	 * 
+	 * keystone.openDatabaseConnection();
+	 * 
+	 */
+	`);
+	keystone.openDatabaseConnection();
+	console.log(`
+	/**
+	 * STARTING 
+	 * 
+	 * keystone.initExpressApp();
+	 * 
+	 */
+	`);
+	keystone.initExpressApp();
+	console.log(`
+	/**
+	 * EXPORTING 
+	 * 
+	 * module.exports = keystone;
+	 * 
+	 */
+	`);
+
+	console.log(`
+	/**
+	 * env=${keystone.get('env')}
+	 */
+	`);
+}
+
