@@ -10,8 +10,8 @@ var keystone = require('keystone');
 // and documentation.
 
 keystone.init({
-	'name': 'kanban',
-	'brand': 'kanban',
+	'name': 'keystone-template',
+	'brand': 'keystone-template',
 
 	'sass': 'public',
 	'static': 'public',
@@ -25,7 +25,7 @@ keystone.init({
 	'session': true,
 	'auth': true,
 	'user model': 'User',
-	'mongo': process.env.MONGO_URI || "mongodb://localhost/test"
+	'mongo': process.env.MONGO_URI || "mongodb://localhost/keystone-template"
 });
 
 // Load your project's Models

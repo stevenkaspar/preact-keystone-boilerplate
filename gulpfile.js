@@ -1,37 +1,49 @@
 'use strict';
-const gulp = require('gulp');
-const watch = require('gulp-watch');
-const shell = require('gulp-shell')
-const sass = require('gulp-sass');
-const spawn = require('child_process').spawn;
+const gulp       = require('gulp');
+const watch      = require('gulp-watch');
+const shell      = require('gulp-shell')
+const sass       = require('gulp-sass');
+const concat     = require('gulp-concat');
+const sourcemaps = require('gulp-sourcemaps');
+const spawn      = require('child_process').spawn;
 
 
 const paths = {
-	src: ['./models/**/*.js','./routes/**/*.js', 'keystone.js', 'package.json'],
-	style: {
-		all: './public/styles/**/*.scss',
-		output: './public/styles/'
-	},
 	/**
 	* paths to files that should restart app
 	*/
 	server_files: [
-		'./models/**/*.js',
-		'./routes/**/*.js',
+		'models/**/*.js',
+		'routes/**/*.js',
 		'keystone.js',
 		'package.json'
-	]
-
+	],
+	/**
+	 * gulp-sass configuration
+	 */
+	style: {
+		watch_files:    'public/styles/src/**/*.scss',
+		src:            './public/styles/src/**/*.scss',
+		dist:           './public/styles/dist',
+		sourcemap_root: '../src'
+	},
+	/**
+	 * webpack config and files to watch
+	 */
+	webpack: {
+		config: 'webpack.config.js',
+		watch_files: [
+			'public/js/src/**/*',
+			'webpack.config.js'
+		]
+	}
 };
 
-/**
-* logic for starting and restarting server process
-*/
-
-let watchApp = (done) => {
+/** starting and restarting keystone app **/
+gulp.task('watch-app', done => {
 
 	// node process
-	var node_process;
+	let node_process;
 	//
 	const dest_path = `.`;
 
@@ -61,16 +73,43 @@ let watchApp = (done) => {
 	node_process = startServer();
 
 	done();
-}
-/** sass setup **/
+});
+
+/** sass **/
 gulp.task('watch-sass', () => {
-	gulp.watch(paths.style.all, ['sass']);
+	gulp.watch(paths.style.watch_files, ['sass']);
 });
 gulp.task('sass', () => {
-	gulp.src(paths.style.all)
-		.pipe(sass().on('error', sass.logError))
-		.pipe(gulp.dest(paths.style.output));
+	gulp.src(paths.style.src)
+		.pipe(sourcemaps.init())
+		.pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
+		.pipe(sourcemaps.write('.', {
+			sourceRoot: paths.style.sourcemap_root
+		}))
+		.pipe(gulp.dest(paths.style.dist));
 });
-/** app setup **/
-gulp.task('watch-app', watchApp);
-gulp.task('default', ['watch-app', 'watch-sass']);
+
+/** webpack **/
+gulp.task('watch-webpack', () => {
+	gulp.watch(paths.webpack.watch_files, ['webpack']);
+});
+gulp.task('webpack', () => {
+	var webpack_process = spawn('./node_modules/.bin/webpack', [
+		'--config',
+		paths.webpack.config
+	]);
+	webpack_process.on('close', (code, signal) => {
+		console.log(`-- ✅  webpack process done --`);
+	});
+	webpack_process.stdout.on('data', (data) => {
+		console.log(`${data}`);
+	});
+	webpack_process.stderr.on('data', (data) => {
+		console.log(`Error: ${data}`);
+	});
+	return webpack_process;
+});
+
+
+/** gulp task setup **/
+gulp.task('default', ['watch-app', 'watch-sass', 'watch-webpack']);

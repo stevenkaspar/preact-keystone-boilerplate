@@ -13,7 +13,7 @@ html
 		link(rel="shortcut icon", href="/favicon.ico", type="image/x-icon")
 
 		//- Customise the stylesheet for your site by editing /public/styles/site.sass
-		link(href="/styles/site.css", rel="stylesheet")
+		link(href="/styles/dist/site.css", rel="stylesheet")
 
 		//- This file provides the default styling for the KeystoneJS Content Editor
 		if user && user.canAccessKeystone
@@ -31,13 +31,6 @@ html
 
 		//- Add any other template-specific HEAD tags by extending the head block
 		
-		script(type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-min.js")
-		script(type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js")
-
-		script(type="text/javascript" data-main="/js/app.js" src="/js/require.js")
-
-		script requirejs(['templates/layouts/default']);
-		
 		//- if user && user.canAccessKeystone
 		//- 	script(src='/keystone/js/content/editor.js')
 
@@ -50,25 +43,19 @@ html
 
 	//- HTML BODY
 	body
-
-		//- HEADER
-		header#Header.navbar.fixed-top.navbar-toggleable-md.navbar-light.bg-faded(header-bindable)
-			button.navbar-toggler.navbar-toggler-right(type='button' data-toggle='collapse' data-target='#NavbarTogglee' aria-controls='navbarTogglerDemo02' aria-expanded='false' aria-label='Toggle navigation')
-				i.fa.fa-bars
-			a.navbar-brand.hidden-lg-up(href='/') 
-				i.fa.fa-home
-			
-			div#NavbarTogglee.collapse.navbar-collapse(style='display: none !important' data-bind='visible: true')
-				ul.navbar-nav.mr-auto.mt-2.mt-md-0
+		nav.navbar.fixed-top.navbar-expand-lg.navbar-light.bg-light
+			a.navbar-brand(href='#') Navbar
+			button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarSupportedContent', aria-controls='navbarSupportedContent', aria-expanded='false', aria-label='Toggle navigation')
+				span.navbar-toggler-icon
+			#navbarSupportedContent.collapse.navbar-collapse
+				ul.navbar-nav.mr-auto
 					each link in navLinks
 						li.nav-item(class=(section == link.key ? 'active' : null)) 
-							
 							a.nav-link(href=link.href)
 								span &nbsp;
 								span!= link.label
-
 		//- BODY
-		div(data-ko-id=knockout_selector)
+		div
 
 			//- NOTE:
 			//- There is no .container wrapping class around body blocks to allow more flexibility in design.
@@ -87,5 +74,7 @@ html
 
 		//- FOOTER
 		.container: #Footer
+
+		script(src='/js/dist/bundle.js')
 
 		block js
