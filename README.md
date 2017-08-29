@@ -20,10 +20,10 @@
 
     gulp default task that...
 
-        - starts the KeystoneJS app
-        - watches KeystoneJS app files and restarts the KeystoneJS app whenever a file changes
-        - watches `public/styles` and compiles sass on file change
-        - watches `public/js` and compiles a `bundle.js` file using webpack
+    - starts the KeystoneJS app
+    - watches KeystoneJS app files and restarts the KeystoneJS app whenever a file changes
+    - watches `public/styles` and compiles sass on file change
+    - watches `public/js` and compiles a `bundle.js` file using webpack
 
 - **webpack**
 
