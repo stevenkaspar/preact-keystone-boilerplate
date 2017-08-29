@@ -9,6 +9,9 @@
     npm install
     gulp
 
+> make sure your mongo process is running
+> make sure you have setup the .env file (template provided .env-template)
+
 ### Requirements
 
 - NodeJS
