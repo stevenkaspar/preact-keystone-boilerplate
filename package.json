@@ -1,7 +1,6 @@
 {
   "name": "knockout-keystone-boilerplate",
   "version": "1.0.0",
-  "private": true,
   "dependencies": {
     "async": "2.1.4",
     "bootstrap": "^4.0.0-beta",
