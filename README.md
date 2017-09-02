@@ -1,6 +1,6 @@
-### KeystoneJS-KnockoutJS Boilerplate
+### Preact-KeystoneJS Boilerplate
 
-###### Comes with a component system to build modular elements using KnockoutJS component process
+###### Comes with a component system to build modular elements using Preact component process
 
 ---
 
@@ -41,6 +41,6 @@
 
     bootstrap 4 (beta) is included and is ready to go with any custom component by using `import 'bootstrap'`
 
-- **knockout**
+- **preact**
 
-    KnockoutJS is included and is used to register components for simple modular development. No need for a .jsx editor or learning the beast that is Angular2 (I do like Angular but it is a discipline in itself)
+    Preact is included and is used to register components for simple modular development
