@@ -1,11 +1,18 @@
-function ViewModel(params, componentInfo) {
-  this.hello_world = params.hello_world;
+import './hello-world.scss';
+import { h, render, Component } from 'preact';
+import registerCustomElement from "preact-custom-element";
 
-  // handle any cleanup such as event listeners or intervals
-  // in this.dispose
-  this.dispose = function(){
-    console.log('hello-world elem disposed');
-  };
-}
+class HelloWorld extends Component{
+  constructor({name}) {
+    super();
+    this.state.name = name;
+  }
+  render(props, state){
+    return (
+      <p>Hello, {state.name}!</p>
+    );
+  }
 
-export default ViewModel;
+};
+
+registerCustomElement(HelloWorld, "hello-world");

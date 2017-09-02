@@ -93,13 +93,13 @@ gulp.task('sass', () => {
 gulp.task('watch-webpack', () => {
 	gulp.watch(paths.webpack.watch_files, ['webpack']);
 });
-gulp.task('webpack', () => {
+gulp.task('webpack', done => {
 	var webpack_process = spawn('./node_modules/.bin/webpack', [
 		'--config',
 		paths.webpack.config
 	]);
 	webpack_process.on('close', (code, signal) => {
-		console.log(`-- ✅  webpack process done --`);
+		done();
 	});
 	webpack_process.stdout.on('data', (data) => {
 		console.log(`${data}`);

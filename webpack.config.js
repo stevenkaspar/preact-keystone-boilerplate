@@ -9,7 +9,7 @@ module.exports = {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'public/js/dist')
   },
-  devtool: process.env.NODE_ENV === 'development' ? 'inline-source-map' : 'false',
+  devtool: process.env.NODE_ENV === 'development' ? 'source-map' : 'false',
   plugins: [
     new webpack.ProvidePlugin({
       $: 'jquery',
@@ -36,7 +36,31 @@ module.exports = {
         }, {
           loader: "sass-loader" // compiles Sass to CSS
         }]
+      },
+      {
+        test: /\.js$/,
+        exclude: /(node_modules|bower_components)/,
+        loader: "babel-loader",
+        options: {
+					presets: [
+						'es2015'
+					],
+					plugins: [
+						['transform-react-jsx', { pragma: 'h' }]
+					]
+				},
       }
     ]
-  }
+  },
+	devServer: {
+		// serve up any static files from src/
+		contentBase: path.join(__dirname, 'src'),
+
+		// enable gzip compression:
+		compress: true,
+
+		// enable pushState() routing, as used by preact-router et al:
+		historyApiFallback: true
+	}
+
 };

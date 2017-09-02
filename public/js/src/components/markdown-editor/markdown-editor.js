@@ -1,15 +1,41 @@
-import * as ko from 'knockout';
-import * as marked from 'marked';
 
-function ViewModel(params, componentInfo) {
-  this.markdown = ko.observable(params.markdown);
+import './markdown-editor.scss';
+import { h, Component } from 'preact';
+import registerCustomElement from "preact-custom-element";
+const marked = require('marked');
 
-  function markedHtml(){
-    return marked( this.markdown() );
+class MarkdownEditor extends Component{
+  constructor({markdown = '### Howdy', options = '{}'}) {
+    super();
+
+    marked.setOptions( JSON.parse(options) );
+
+    this.state.markdown = markdown;
+
+    this.handleChange   = this.handleChange.bind(this);
   }
 
-  this.markedHtml = ko.pureComputed(markedHtml.bind(this));
-  
-}
+  getMarkdownHTML(){
+    return {
+      __html: marked(this.state.markdown)
+    };
+  }
 
-export default ViewModel;
+  handleChange(event) {
+    this.setState({markdown: event.target.value});
+  }
+  
+  render(props, state){
+    return (
+    <div className='row'>
+      <div className='col-xs-12 col-sm-6'>
+        <textarea className='form-control' rows='10' value={state.markdown} onInput={this.handleChange}/>
+      </div>
+      <div className='col-xs-12 col-sm-6' dangerouslySetInnerHTML={this.getMarkdownHTML()}/>
+    </div>);
+  }
+
+};
+
+registerCustomElement(MarkdownEditor, "markdown-editor");
+

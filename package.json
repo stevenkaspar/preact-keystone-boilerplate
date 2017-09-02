@@ -1,5 +1,5 @@
 {
-  "name": "knockout-keystone-boilerplate",
+  "name": "preact-keystone-boilerplate",
   "version": "1.0.0",
   "dependencies": {
     "async": "2.1.4",
@@ -9,15 +9,17 @@
     "jquery": "^3.0.0",
     "keystone": "4.0.0-beta.5",
     "keystone-email": "1.0.5",
-    "knockout": "^3.4.2",
     "lodash": "^4.13.1",
     "marked": "^0.3.6",
     "node-sass": "4.5.0",
     "node-sass-middleware": "0.11.0",
     "popper.js": "^1.12.4",
+    "preact": "^8.2.5",
+    "preact-custom-element": "^2.0.0",
     "pug": "2.0.0-beta11"
   },
   "devDependencies": {
+    "babel-loader": "^7.1.2",
     "css-loader": "^0.28.5",
     "eslint": "3.15.0",
     "eslint-config-keystone": "3.0.0",

@@ -2,15 +2,15 @@ extends ../layouts/default
 
 block content
 	.container
-		h2.display-4 KeystoneJS-KnockoutJS boilerplate
+		h2.display-4 Preact-KeystoneJS boilerplate
 		h5.text-muted Comes with a component system to modularly build elements that can be included like <code><a href='#MarkdownEditor'>markdown-editor</a></code>
 		
 		hr
 		.pb-2#Features
-			h4.bg-info.text-white.p-2 Features
+			h3.bg-info.text-white.p-2 Features
 			.pl-0.pl-sm-4
 				.pb-4
-					h6.bg-info.text-white.p-2
+					h4.bg-info.text-white.p-2
 						i.fa.fa-long-arrow-right
 						| &nbsp;gulp
 					p <code>gulp</code> default task that...
@@ -21,39 +21,50 @@ block content
 							li watches <code>public/js</code> and compiles a bundle.js file using <strong>webpack</strong>
 
 				.pb-4
-					h6.bg-info.text-white.p-2
+					h4.bg-info.text-white.p-2
 						i.fa.fa-long-arrow-right
 						| &nbsp;webpack
 					p <strong>webpack</strong> is called by the gulp task using <code>webpack.config.js</code> to compile one static <code>bundle.js</code> file
 
 				.pb-4
-					h6.bg-info.text-white.p-2
+					h4.bg-info.text-white.p-2
 						i.fa.fa-long-arrow-right
 						| &nbsp;sass
 					p <strong>gulp-sass</strong> compiles <code>public/styles/scss</code> directory to one <code>public/styles/site.css</code> file
 
 				.pb-4
-					h6.bg-info.text-white.p-2
+					h4.bg-info.text-white.p-2
 						i.fa.fa-long-arrow-right
 						| &nbsp;bootstrap
 					p <strong>bootstrap 4</strong> (beta) is included and is ready to go with any custom component by using <code>import 'bootstrap'</code>
 
 				.pb-4
-					h6.bg-info.text-white.p-2
+					h4.bg-info.text-white.p-2
 						i.fa.fa-long-arrow-right
-						| &nbsp;knockout
-					p <strong>KnockoutJS</strong> is included and is used to register components for simple modular development. No need for a .jsx editor or learning the beast that is Angular2 (I do like Angular but it is a discipline in itself)
-		.pb-2#ExampleComponents
-			h4.bg-secondary.text-white.p-2 Example Components
-			.pl-0.pl-sm-4
-				.pb-4
-					h6.bg-secondary.text-white.p-2
-						i.fa.fa-long-arrow-right
-						| &nbsp;hello-world
-					hello-world(params='hello_world: "Check out how components work in <strong><em>public/js/src/components/hello-world</em></strong><br/>If anything, you at least have a markdown editor"')
+						| &nbsp;font-awesome
+					p <strong>Font Awesome</strong> included using <i>fa</i> class. <code>&lt;i class='fa fa-fort-awesome'&gt;&lt;/i&gt;</code> => <i class='fa fa-fort-awesome'></i>
 
 				.pb-4
-					h6.bg-secondary.text-white.p-2#MarkdownEditor
+					h4.bg-info.text-white.p-2
 						i.fa.fa-long-arrow-right
-						| &nbsp;markdown-editor
-					markdown-editor(params='markdown: "`env: '+env+'`\\n\\n_look at `index.pug` to see how to pass data to components before sending to client_"')
+						| &nbsp;preact
+					p <strong>Preact</strong> is included and is used along with <code>preact-custom-element</code> to register components for simple modular development
+		.pb-2#ExampleComponents
+			h3.bg-secondary.text-white.p-2 Example Components
+			.pl-0.pl-sm-4
+				.pb-4
+					h4.bg-secondary.text-white.p-2
+						i.fa.fa-long-arrow-right
+						| &nbsp;hello-world(name: string)
+					hello-world(name='Preact Fans')
+
+				.pb-4
+					h4.bg-secondary.text-white.p-2#MarkdownEditor
+						i.fa.fa-long-arrow-right
+						| &nbsp;markdown-editor([markdown: string, options: JSON string])
+
+					h5.pt-4.pb-2 Pass data directly from server to client through component attributes
+					markdown-editor(markdown='_env: '+env+'_ **<= actual `process.env.NODE_ENV`**\n\n_look at `index.pug` to see how to pass data to components before sending to client_\n\nthis editor and renderer are included anywhere with\n\n`markdown-editor(markdown="...")`\n\n<h3>HTML</h3>')
+
+					h5.pt-4.pb-2 Set Markdown options from attribute 
+					markdown-editor(markdown='_env: '+env+'_ **<= actual `process.env.NODE_ENV`**\n\n_look at `index.pug` to see how to pass data to components before sending to client_\n\nthis editor and renderer are included anywhere with\n\n`markdown-editor(markdown="..." options="{"sanitize": true}")`\n\n<h3>HTML</h3>' options='{"sanitize": true}')
