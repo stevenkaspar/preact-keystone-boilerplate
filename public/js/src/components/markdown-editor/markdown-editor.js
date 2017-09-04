@@ -1,10 +1,9 @@
 
 import './markdown-editor.scss';
 import { h, Component } from 'preact';
-import registerCustomElement from "preact-custom-element";
 const marked = require('marked');
 
-class MarkdownEditor extends Component{
+export class MarkdownEditor extends Component{
   constructor({markdown = '### Howdy', options = '{}'}) {
     super();
 
@@ -36,6 +35,4 @@ class MarkdownEditor extends Component{
   }
 
 };
-
-registerCustomElement(MarkdownEditor, "markdown-editor");
 

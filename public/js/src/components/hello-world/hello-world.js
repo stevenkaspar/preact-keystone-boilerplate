@@ -1,8 +1,7 @@
 import './hello-world.scss';
 import { h, render, Component } from 'preact';
-import registerCustomElement from "preact-custom-element";
 
-class HelloWorld extends Component{
+export default class HelloWorld extends Component{
   constructor({name}) {
     super();
     this.state.name = name;
@@ -15,4 +14,3 @@ class HelloWorld extends Component{
 
 };
 
-registerCustomElement(HelloWorld, "hello-world");

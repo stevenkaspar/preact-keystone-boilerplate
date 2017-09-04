@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 5);
+/******/ 	return __webpack_require__(__webpack_require__.s = 4);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -1514,23 +1514,28 @@ function updateLink (link, options, obj) {
 /* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
-!function(e,t){if(true)module.exports=t(__webpack_require__(0));else if("function"==typeof define&&define.amd)define(["preact"],t);else{var r=t("object"==typeof exports?require("preact"):e.preact);for(var o in r)("object"==typeof exports?exports:e)[o]=r[o]}}(this,function(e){return function(e){function t(o){if(r[o])return r[o].exports;var n=r[o]={exports:{},id:o,loaded:!1};return e[o].call(n.exports,n,n.exports,t),n.loaded=!0,n.exports}var r={};return t.m=e,t.c=r,t.p="",t(0)}([function(e,t,r){"use strict";function o(e,t){function r(){var t=[].slice.call(this.attributes).reduce(function(e,t){return e[t.nodeName]=t.nodeValue,e},{});(0,n.render)((0,n.h)(e,t),this)}var o=Object.create(HTMLElement.prototype);return o.attachedCallback=r,o.detachedCallback=function(){(0,n.unmountComponentAtNode)(this)},o.attributeChangedCallback=r,document.registerElement(t||e.displayName,{prototype:o})}Object.defineProperty(t,"__esModule",{value:!0}),t["default"]=o;var n=r(1)},function(t,r){t.exports=e}])});
-
-/***/ }),
-/* 5 */
-/***/ (function(module, exports, __webpack_require__) {
-
 "use strict";
 
 
-__webpack_require__(6);
+__webpack_require__(5);
 
-__webpack_require__(9);
+var _preactCustomElement = __webpack_require__(8);
 
-__webpack_require__(13);
+var _preactCustomElement2 = _interopRequireDefault(_preactCustomElement);
+
+var _helloWorld = __webpack_require__(9);
+
+var _markdownEditor = __webpack_require__(13);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+// import all components here
+// globally import bootstrap
+(0, _preactCustomElement2.default)(_helloWorld.HelloWorld, 'hello-world');
+(0, _preactCustomElement2.default)(_markdownEditor.MarkdownEditor, 'markdown-editor');
 
 /***/ }),
-/* 6 */
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(jQuery, Popper) {/*!
@@ -5364,10 +5369,10 @@ var Popover = function ($) {
 
 
 })();
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7), __webpack_require__(8)["default"]))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6), __webpack_require__(7)["default"]))
 
 /***/ }),
-/* 7 */
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -15627,7 +15632,7 @@ return jQuery;
 
 
 /***/ }),
-/* 8 */
+/* 7 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -18076,23 +18081,27 @@ Popper.Defaults = Defaults;
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(1)))
 
 /***/ }),
+/* 8 */
+/***/ (function(module, exports, __webpack_require__) {
+
+!function(e,t){if(true)module.exports=t(__webpack_require__(0));else if("function"==typeof define&&define.amd)define(["preact"],t);else{var r=t("object"==typeof exports?require("preact"):e.preact);for(var o in r)("object"==typeof exports?exports:e)[o]=r[o]}}(this,function(e){return function(e){function t(o){if(r[o])return r[o].exports;var n=r[o]={exports:{},id:o,loaded:!1};return e[o].call(n.exports,n,n.exports,t),n.loaded=!0,n.exports}var r={};return t.m=e,t.c=r,t.p="",t(0)}([function(e,t,r){"use strict";function o(e,t){function r(){var t=[].slice.call(this.attributes).reduce(function(e,t){return e[t.nodeName]=t.nodeValue,e},{});(0,n.render)((0,n.h)(e,t),this)}var o=Object.create(HTMLElement.prototype);return o.attachedCallback=r,o.detachedCallback=function(){(0,n.unmountComponentAtNode)(this)},o.attributeChangedCallback=r,document.registerElement(t||e.displayName,{prototype:o})}Object.defineProperty(t,"__esModule",{value:!0}),t["default"]=o;var n=r(1)},function(t,r){t.exports=e}])});
+
+/***/ }),
 /* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 __webpack_require__(10);
 
 var _preact = __webpack_require__(0);
-
-var _preactCustomElement = __webpack_require__(4);
-
-var _preactCustomElement2 = _interopRequireDefault(_preactCustomElement);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -18130,9 +18139,8 @@ var HelloWorld = function (_Component) {
   return HelloWorld;
 }(_preact.Component);
 
+exports.default = HelloWorld;
 ;
-
-(0, _preactCustomElement2.default)(HelloWorld, "hello-world");
 
 /***/ }),
 /* 10 */
@@ -18281,17 +18289,16 @@ module.exports = function (css) {
 "use strict";
 
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.MarkdownEditor = undefined;
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 __webpack_require__(14);
 
 var _preact = __webpack_require__(0);
-
-var _preactCustomElement = __webpack_require__(4);
-
-var _preactCustomElement2 = _interopRequireDefault(_preactCustomElement);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -18301,7 +18308,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 var marked = __webpack_require__(16);
 
-var MarkdownEditor = function (_Component) {
+var MarkdownEditor = exports.MarkdownEditor = function (_Component) {
   _inherits(MarkdownEditor, _Component);
 
   function MarkdownEditor(_ref) {
@@ -18354,8 +18361,6 @@ var MarkdownEditor = function (_Component) {
 }(_preact.Component);
 
 ;
-
-(0, _preactCustomElement2.default)(MarkdownEditor, "markdown-editor");
 
 /***/ }),
 /* 14 */
